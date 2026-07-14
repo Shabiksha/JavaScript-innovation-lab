@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Complete Basic Calculator</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .calculator {
+      background-color: white;
+      padding: 30px;
+      width: 380px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin-left: 15px;
+      font-weight: bold;
+      color: #444;
+    }
+
+    input {
+      width: 90%;
+      padding: 12px;
+      margin: 10px 0 15px;
+      font-size: 16px;
+      border: 1px solid #aaa;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #667eea;
+      box-shadow: 0 0 5px rgba(102, 126, 234, 0.6);
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    button {
+      padding: 14px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .add {
+      background-color: #2ecc71;
+    }
+
+    .subtract {
+      background-color: #f39c12;
+    }
+
+    .multiply {
+      background-color: #3498db;
+    }
+
+    .divide {
+      background-color: #9b59b6;
+    }
+
+    .clear {
+      grid-column: span 2;
+      background-color: #e74c3c;
+    }
+
+    button:hover {
+      opacity: 0.85;
+    }
+
+    #result {
+      margin-top: 25px;
+      padding: 15px;
+      background-color: #f4f6ff;
+      border-radius: 8px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #222;
+      min-height: 30px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="calculator">
+    <h1>Basic Calculator</h1>
+
+    <label>First Number:</label>
+    <input type="number" id="num1" placeholder="Enter first number">
+
+    <label>Second Number:</label>
+    <input type="number" id="num2" placeholder="Enter second number">
+
+    <div class="buttons">
+      <button class="add" onclick="calculate('add')">Add</button>
+      <button class="subtract" onclick="calculate('subtract')">Subtract</button>
+      <button class="multiply" onclick="calculate('multiply')">Multiply</button>
+      <button class="divide" onclick="calculate('divide')">Divide</button>
+      <button class="clear" onclick="clearCalculator()">Clear</button>
+    </div>
+
+    <div id="result">Output will appear here</div>
+  </div>
+
+  <script>
+    // Addition function
+    function add(a, b) {
+      return a + b;
+    }
+
+    // Subtraction function
+    function subtract(a, b) {
+      return a - b;
+    }
+
+    // Multiplication function
+    function multiply(a, b) {
+      return a * b;
+    }
+
+    // Division function
+    function divide(a, b) {
+      if (b === 0) {
+        return "Error: Cannot divide by zero";
+      } else {
+        return a / b;
+      }
+    }
+
+    // Main calculator function
+    function calculate(operation) {
+      let firstInput = document.getElementById("num1").value;
+      let secondInput = document.getElementById("num2").value;
+
+      if (firstInput === "" || secondInput === "") {
+        document.getElementById("result").innerHTML = "Please enter both numbers";
+        return;
+      }
+
+      let num1 = Number(firstInput);
+      let num2 = Number(secondInput);
+      let result;
+
+      if (operation === "add") {
+        result = add(num1, num2);
+        document.getElementById("result").innerHTML = "Addition Output: " + result;
+      } 
+      else if (operation === "subtract") {
+        result = subtract(num1, num2);
+        document.getElementById("result").innerHTML = "Subtraction Output: " + result;
+      } 
+      else if (operation === "multiply") {
+        result = multiply(num1, num2);
+        document.getElementById("result").innerHTML = "Multiplication Output: " + result;
+      } 
+      else if (operation === "divide") {
+        result = divide(num1, num2);
+        document.getElementById("result").innerHTML = "Division Output: " + result;
+      }
+    }
+
+    // Clear function
+    function clearCalculator() {
+      document.getElementById("num1").value = "";
+      document.getElementById("num2").value = "";
+      document.getElementById("result").innerHTML = "Output will appear here";
+    }
+  </script>
+
+</body>
+</html>
