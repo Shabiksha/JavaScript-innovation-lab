@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <h2>Word&Character Count</h2>
+    <textarea id="mainText" placeholder="type here...."></textarea>
+    <div>
+        CharCount:<span id="CharCount"></span><br>
+        WordsCount:<span id="WordsCount"></span>
+    </div>
+    <script>
+        document.getElementById("mainText").addEventListener("input",function(){
+            let text=this.value;
+            document.getElementById("CharCount").innerText=text.length;
+            let trimmed=text.trim();
+            let words=trimmed==" "? 0: text.split(/\s+/).length;
+            document.getElementById("WordsCount").innerText=words;
+        })
+    </script>
+</body>
+</html>
